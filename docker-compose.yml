@@ -1,0 +1,11 @@
+version: "3"
+services:
+  flaresolverr:
+    image: ghcr.io/magicalmadoka/openai-signup-tool
+    container_name: openai-signup-tool
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

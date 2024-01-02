@@ -1,0 +1,6 @@
+selenium==4.16.0
+requests==2.31.0
+loguru==0.7.2
+undetected_chromedriver==3.5.4
+func_timeout==4.3.5
+xvfbwrapper==0.2.9
