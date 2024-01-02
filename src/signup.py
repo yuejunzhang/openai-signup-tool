@@ -11,7 +11,7 @@ import traceback
 import uuid
 
 import requests
-from func_timeout import func_timeout
+from func_timeout import func_timeout, FunctionTimedOut
 from loguru import logger
 from selenium.common import NoSuchElementException, StaleElementReferenceException, TimeoutException, WebDriverException
 from selenium.webdriver import ActionChains
@@ -39,6 +39,9 @@ class Signup:
         except Interrupted as e:
             logger.error("error in signup: {}".format(e))
             raise e
+        except FunctionTimedOut as e:
+            logger.warning("signup timeout")
+            pass
         except Exception as e:
             traceback.print_exc()
         finally:
