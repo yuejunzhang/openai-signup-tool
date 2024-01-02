@@ -225,7 +225,7 @@ class Signup:
         for i in range(3):
             try:
                 try:
-                    arkose_frame = WebDriverWait(self.driver, 5).until(
+                    arkose_frame = WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located((By.CSS_SELECTOR, 'iframe[title="Verification challenge"]'))
                     )
                     self.driver.switch_to.frame(arkose_frame)
@@ -236,7 +236,7 @@ class Signup:
                     return
 
                 try:
-                    change_challenge_frame = WebDriverWait(self.driver, 5).until(
+                    change_challenge_frame = WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located((By.ID, 'game-core-frame'))
                     )
                 except TimeoutException:
