@@ -42,6 +42,7 @@ docker compose up -d
 注册成功的账号会出现在`data/accounts.txt`中。如果账号被授权了额度，会额外提取sess到`data/sess.txt`中。
 
 ## 其他说明
+- 本项目使用的过cf方案是免费的，耗时时间可能较长。
 - 本项目在一个正常延时的网络和一个配置正常的机器下测试运行正常，所以如果出现问题，可以先排查网络和机器的问题。当然也欢迎你补充一些异常处理的代码。
 - 改方案是基于浏览器的方案，内存不要给的太少，否则会异常退出。
 
@@ -50,4 +51,8 @@ docker compose up -d
 
 ## 交流沟通
 - 本项目相关的讨论请提issue
-- 其他技术交流。逆向、验证码、深度学习、python、go都可以聊
+- 其他技术交流: [Telegram](https://t.me/+iNf8qQk0KUpkYmEx)
+
+## 帮助我训练模型
+我正在维护一些打码模型，并且放出来训练好的参数供大家免费使用,项目地址是[funcaptcha-challenger](https://github.com/MagicalMadoka/funcaptcha-challenger)
+但是缺少更多的训练数据，如果你配置了打码服务，并且乐于帮助我，你可以把`data/solved`目录下的图片发给[我的机器人](https://t.me/madokax_bot)

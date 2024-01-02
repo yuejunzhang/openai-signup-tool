@@ -25,11 +25,8 @@ def main():
     worker_thread.start()
 
     def signup():
-        try:
-            s = Signup()
-            s.sign_up()
-        except Exception as e:
-            traceback.print_exc()
+        s = Signup()
+        s.sign_up()
 
     while True:
         if GlobalState.exception :
