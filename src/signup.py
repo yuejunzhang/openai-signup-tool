@@ -70,6 +70,7 @@ class Signup:
         submit_btn = self.driver.find_element(By.XPATH, '//button[@type="submit"]')
         submit_btn.click()
 
+        time.sleep(5)
         while True:
             try:
                 self.driver.find_element(By.XPATH, "//h1[text()='Oops!']")
@@ -87,9 +88,8 @@ class Signup:
                 break
             except NoSuchElementException:
                 logger.debug(f"{email} wait for email verification")
-                time.sleep(6)
                 self.driver.refresh()
-                time.sleep(4)
+                time.sleep(10)
 
         name_input = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='Full name']"))
