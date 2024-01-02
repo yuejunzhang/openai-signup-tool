@@ -236,7 +236,7 @@ class Signup:
                     return
 
                 try:
-                    change_challenge_frame = WebDriverWait(self.driver, 10).until(
+                    change_challenge_frame = WebDriverWait(self.driver, 15).until(
                         EC.presence_of_element_located((By.ID, 'game-core-frame'))
                     )
                 except TimeoutException:
