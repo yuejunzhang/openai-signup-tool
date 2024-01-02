@@ -22,7 +22,7 @@ pm = ThreadPoolManager(max_threads)
 def click_verify_link(link):
     driver = get_webdriver()
     try:
-        func_timeout(10 * 60, cloudflare_solver.bypass, args=(link, driver))
+        func_timeout(5 * 60, cloudflare_solver.bypass, args=(link, driver))
         logger.info('Email verified')
     except FunctionTimedOut:
         logger.warning('Function timed out')

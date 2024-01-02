@@ -35,7 +35,7 @@ class Signup:
 
     def sign_up(self):
         try:
-            func_timeout(10 * 60, self._sign_up)
+            func_timeout(5 * 60, self._sign_up)
         except Interrupted as e:
             logger.error("error in signup: {}".format(e))
             raise e
