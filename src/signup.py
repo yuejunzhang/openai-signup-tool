@@ -115,7 +115,7 @@ class Signup:
 
     def _get_email(self):
         return ''.join(
-            [secrets.choice(string.ascii_letters + string.digits) for _ in range(12)]) + "@" + config['domain']
+            [secrets.choice(string.ascii_letters + string.digits) for _ in range(15)]) + "@" + config['domain']
 
     def _get_password(self):
         return ''.join(
