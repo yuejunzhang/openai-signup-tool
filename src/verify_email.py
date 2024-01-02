@@ -1,14 +1,9 @@
 import email
 import imaplib
 import re
-import threading
 import time
-from concurrent.futures import ThreadPoolExecutor
-from queue import Queue
 
-from func_timeout import FunctionTimedOut,func_timeout
-
-
+from func_timeout import FunctionTimedOut, func_timeout
 
 import cloudflare_solver
 
@@ -17,22 +12,11 @@ from loguru import logger
 from config import config
 from globals import GlobalState
 from signup import Interrupted
+from src.pool_manager import ThreadPoolManager
 from utils import get_webdriver
 
-
-
 max_threads = config['emailWorkerNum']
-task_queue = Queue(max_threads)
-
-executor = ThreadPoolExecutor(max_threads)
-
-def worker(q, executor):
-    while True:
-        task = q.get()
-        executor.submit(task)
-
-worker_thread = threading.Thread(target=worker, args=(task_queue, executor))
-worker_thread.start()
+pm = ThreadPoolManager(max_threads)
 
 
 def click_verify_link(link):
@@ -47,8 +31,8 @@ def click_verify_link(link):
     finally:
         driver.quit()
 
-def verify_email():
 
+def verify_email():
     username = config['emailAddr']
     password = config['emailPassword']
     imap_server = config['emailImapServer']
@@ -57,13 +41,13 @@ def verify_email():
         GlobalState.exception = Interrupted("email config error")
         raise GlobalState.exception
     if emailImapPort:
-        mail = imaplib.IMAP4_SSL(imap_server,port=emailImapPort)
+        mail = imaplib.IMAP4_SSL(imap_server, port=emailImapPort)
     else:
         mail = imaplib.IMAP4_SSL(imap_server)
     try:
         mail.login(username, password)
     except Exception as e:
-        GlobalState.exception  = Interrupted("email config error")
+        GlobalState.exception = Interrupted("email config error")
         raise GlobalState.exception
 
     logger.info("start to monitor openai verify email")
@@ -104,14 +88,15 @@ def verify_email():
                             link = re.search(r'href="(https://mandrillapp.com[^"]+)"', html_content)
                             if link:
                                 link = link.group(1)
-                                def task():
-                                    click_verify_link(link)
-                                task_queue.put(task)
+                                pm.add_task(lambda: click_verify_link(link))
+
     try:
         while True:
             check_mail()
             time.sleep(10)
     finally:
         mail.logout()
+
+
 if __name__ == '__main__':
     verify_email()

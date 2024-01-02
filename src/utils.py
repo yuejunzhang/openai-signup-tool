@@ -164,9 +164,6 @@ def get_webdriver() -> WebDriver:
     if get_config_headless():
         if os.name == 'nt':
             windows_headless = True
-        elif os.name == 'darwin':
-            # debug
-            windows_headless = False
         else:
             start_xvfb_display()
     # For normal headless mode:
