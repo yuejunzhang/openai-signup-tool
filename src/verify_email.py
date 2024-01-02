@@ -12,7 +12,7 @@ from loguru import logger
 from config import config
 from globals import GlobalState
 from signup import Interrupted
-from src.pool_manager import ThreadPoolManager
+from pool_manager import ThreadPoolManager
 from utils import get_webdriver
 
 max_threads = config['emailWorkerNum']

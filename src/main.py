@@ -1,13 +1,9 @@
 import threading
-import traceback
-import tracemalloc
-from concurrent.futures import ThreadPoolExecutor
-from queue import Queue
 
 from config import config
 from globals import  GlobalState
-from signup import Signup, Interrupted
-from src.pool_manager import ThreadPoolManager
+from signup import Signup
+from pool_manager import ThreadPoolManager
 from verify_email import verify_email
 
 
