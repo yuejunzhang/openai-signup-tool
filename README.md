@@ -26,7 +26,7 @@ cd openai-signup-tool
 3. 重命名`config/config.json.example`为`config/config.json`
 
 - `domain`: 必填，你注册用的域名。
-- `proxy`: 选填，代理地址。背后最好使用高质量的代理池，可以减少过cf和arkose的麻烦。如果代理服务器运行在你的本地，请使用`host.docker.internal`作为代理地址。
+- `proxy`: 选填，代理地址。背后最好使用高质量的代理池，可以减少过cf和arkose的麻烦。如果代理服务器运行在你的本地，请使用`host.docker.internal`替换掉`127.0.0.1`
 - `clientKey`: 选填，[yescaptcha](https://yescaptcha.com/i/oFmkQz)的clientKey，如果出现验证码，会尝试进行打码。
 - `emailWorkerNum`: 必填，处理邮件的线程个数，根据机器的配置自行决定。
 - `signupWorkerNum`: 必填，注册线程的个数，根据机器的配置自行决定。
