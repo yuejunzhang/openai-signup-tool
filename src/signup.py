@@ -243,7 +243,7 @@ class Signup:
                 self.driver.switch_to.frame(change_challenge_frame)
 
                 try:
-                    WebDriverWait(self.driver, 10).until(
+                    WebDriverWait(self.driver, 20).until(
                         EC.presence_of_element_located((By.XPATH, "//button[text()='Begin puzzle']"))
                     )
 
