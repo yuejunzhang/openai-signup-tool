@@ -50,7 +50,7 @@ docker compose up -d
 - https://github.com/FlareSolverr/FlareSolverr
 
 ## 交流沟通
-- 本项目相关的讨论请提issue
+- 本项目相关的讨论请提issue。先点star哦。
 - 其他技术交流: [Telegram](https://t.me/+iNf8qQk0KUpkYmEx)
 
 ## 帮助我训练模型
