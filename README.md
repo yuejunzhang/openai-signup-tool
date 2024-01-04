@@ -26,7 +26,7 @@ cd openai-signup-tool
 3. 重命名`config/config.json.example`为`config/config.json`
 
 - `domain`: 必填，你注册用的域名。
-- `proxy`: 选填，代理地址。正常的URL格式例如：`http://user:password@123.45.67.89:8080` 如果是多个用`;`进行分割，会自动随机选择一个进行使用。
+- `proxy`: 选填，代理地址。正常的URL格式例如：`http://user:password@123.45.67.89:8080`。如果是多个用`;`进行分割，会自动随机选择一个进行使用。
   - 背后最好使用高质量的代理池，可以减少过cf和arkose的麻烦。如果代理服务器运行在你的本地，请使用`host.docker.internal`替换掉`127.0.0.1`
   - 请注意在一次注册上下文中会使用一个固定的代理地址，因此如果你的代理是动态的，那么他的生效时间应该需要大于一次注册的时间。
 - `clientKey`: 选填，[yescaptcha](https://yescaptcha.com/i/oFmkQz)的clientKey，如果出现验证码，会尝试进行打码。
