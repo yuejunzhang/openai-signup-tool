@@ -118,14 +118,22 @@ def create_proxy_extension(proxy: dict) -> str:
 def get_webdriver() -> WebDriver:
     proxy = None
     proxy_list = config['proxy']
-
     if proxy_list:
         proxies = proxy_list.split(';')
         proxy_url = random.choice(proxies)
-
-        proxy = {
-            "url": proxy_url
-        }
+        if "@" in proxy_url:
+            proxy_url_no_protocol = proxy_url.replace("http://", "").replace("https://", "")
+            user_pass, url = proxy_url_no_protocol.split('@')
+            username, password = user_pass.split(':')
+            proxy = {
+                "url": "http://" + url,
+                "username": username,
+                "password": password
+            }
+        else:
+            proxy = {
+                "url": "http://" + proxy_url
+            }
     global PATCHED_DRIVER_PATH, USER_AGENT
     logging.debug('Launching web browser...')
 
