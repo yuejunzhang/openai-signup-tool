@@ -132,7 +132,7 @@ def get_webdriver() -> WebDriver:
             }
         else:
             proxy = {
-                "url": "http://" + proxy_url
+                "url": proxy_url
             }
     global PATCHED_DRIVER_PATH, USER_AGENT
     logging.debug('Launching web browser...')
