@@ -1,7 +1,7 @@
 # openai注册机
 
 ## 介绍
-基于浏览器方案的openai注册机
+基于浏览器方案的openai注册机。如果你再找协议版的，可以参考[openai-signup-bot](https://github.com/MagicalMadoka/openai-signup-bot)
 
 ## 免责声明
 本项目仅供学习交流使用，严禁用于商业用途，否则后果自负。
