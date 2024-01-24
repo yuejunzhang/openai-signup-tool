@@ -180,7 +180,7 @@ class Signup:
                                     fcntl.flock(f, fcntl.LOCK_EX)
                                     f.write(f"{email}----{password}\n")
 
-                                logger.info(f"{email} signup success")
+                                logger.info(f"{email} signup success!")
                                 self._save_challange_image()
                                 sess = json.loads(response['body'])['session']['sensitive_id']
                                 return sess
