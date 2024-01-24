@@ -4,8 +4,8 @@
   "clientKey": "",
   "emailWorkerNum": 1,
   "signupWorkerNum": 1,
-  "emailAddr": "akunkeji@163.com",
-  "emailPassword": "Akun37214728",
+  "emailAddr": "@163.com",
+  "emailPassword": "",
   "emailImapServer": "imap.163.com",
   "emailImapPort": ""
 }
