@@ -4,8 +4,8 @@
   "clientKey": "",
   "emailWorkerNum": 1,
   "signupWorkerNum": 1,
-  "emailAddr": "akunkeji@gmail.com",
+  "emailAddr": "akunkeji@aliyun.com",
   "emailPassword": "Akun720801-1",
-  "emailImapServer": "imap.gmail.com",
+  "emailImapServer": "imap.aliyun.com",
   "emailImapPort": "993"
 }
