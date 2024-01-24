@@ -173,6 +173,8 @@ class Signup:
                         log_json['params']['response']['url']:
                     request_id = log_json['params']['requestId']
                     try:
+                        logger.info(f"{email} signup success. Password: {password}")
+
                         response = self.driver.execute_cdp_cmd('Network.getResponseBody', {'requestId': request_id})
                         if response and response['body']:
                             if 'session' in response['body']:
