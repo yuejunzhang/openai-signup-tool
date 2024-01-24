@@ -50,7 +50,7 @@ def verify_email():
     try:
         mail.login(username, password)
     except Exception as e:
-        GlobalState.exception = Interrupted("email config error")
+        GlobalState.exception = Interrupted("email config error2")
         raise GlobalState.exception
 
     logger.info("start to monitor openai verify email")
