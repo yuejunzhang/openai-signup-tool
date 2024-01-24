@@ -1,0 +1,11 @@
+{
+  "domain": "",
+  "proxy": "",
+  "clientKey": "",
+  "emailWorkerNum": 1,
+  "signupWorkerNum": 1,
+  "emailAddr": "",
+  "emailPassword": "",
+  "emailImapServer": "",
+  "emailImapPort": ""
+}
