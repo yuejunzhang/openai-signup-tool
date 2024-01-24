@@ -29,7 +29,10 @@ def click_verify_link(link):
     except Exception as e:
         logger.error(e)
     finally:
-        driver.quit()
+        try:
+            func_timeout(10,driver.quit)
+        except BaseException as e:
+            logger.error(f"Error occurred while quitting the driver: {e}")
 
 
 def verify_email():

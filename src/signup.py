@@ -11,7 +11,7 @@ import traceback
 import uuid
 
 import requests
-from func_timeout import func_timeout
+from func_timeout import func_timeout, FunctionTimedOut
 from loguru import logger
 from selenium.common import NoSuchElementException, StaleElementReferenceException, TimeoutException, WebDriverException
 from selenium.webdriver import ActionChains
@@ -39,6 +39,9 @@ class Signup:
         except Interrupted as e:
             logger.error("error in signup: {}".format(e))
             raise e
+        except FunctionTimedOut as e:
+            logger.warning("signup timeout")
+            pass
         except Exception as e:
             traceback.print_exc()
         finally:
@@ -67,6 +70,7 @@ class Signup:
         submit_btn = self.driver.find_element(By.XPATH, '//button[@type="submit"]')
         submit_btn.click()
 
+        time.sleep(5)
         while True:
             try:
                 self.driver.find_element(By.XPATH, "//h1[text()='Oops!']")
@@ -84,9 +88,8 @@ class Signup:
                 break
             except NoSuchElementException:
                 logger.debug(f"{email} wait for email verification")
-                time.sleep(6)
                 self.driver.refresh()
-                time.sleep(4)
+                time.sleep(10)
 
         name_input = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='Full name']"))
@@ -112,7 +115,7 @@ class Signup:
 
     def _get_email(self):
         return ''.join(
-            [secrets.choice(string.ascii_letters + string.digits) for _ in range(12)]) + "@" + config['domain']
+            [secrets.choice(string.ascii_letters + string.digits) for _ in range(15)]) + "@" + config['domain']
 
     def _get_password(self):
         return ''.join(
@@ -222,7 +225,7 @@ class Signup:
         for i in range(3):
             try:
                 try:
-                    arkose_frame = WebDriverWait(self.driver, 5).until(
+                    arkose_frame = WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located((By.CSS_SELECTOR, 'iframe[title="Verification challenge"]'))
                     )
                     self.driver.switch_to.frame(arkose_frame)
@@ -233,7 +236,7 @@ class Signup:
                     return
 
                 try:
-                    change_challenge_frame = WebDriverWait(self.driver, 5).until(
+                    change_challenge_frame = WebDriverWait(self.driver, 15).until(
                         EC.presence_of_element_located((By.ID, 'game-core-frame'))
                     )
                 except TimeoutException:
