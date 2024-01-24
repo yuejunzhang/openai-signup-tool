@@ -1,6 +1,6 @@
 import threading
 
-from config import config
+from app/config import config
 from globals import  GlobalState
 from signup import Signup
 from pool_manager import ThreadPoolManager
