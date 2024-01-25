@@ -71,7 +71,7 @@ def bypass(link,driver):
     
     driver.get(link)
     driver.start_session()
-    logger.debug("\n============="+ driver.html)
+    logger.debug( driver.body  )
     driver.get(link)
     driver.start_session()
 
