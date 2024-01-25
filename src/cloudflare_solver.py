@@ -78,7 +78,8 @@ def bypass(link,driver):
     # todo check ban
 
     page_title = driver.title
-    logger.debug( driver.body,page_title  )
+    logger.debug(f"================Body: {driver.body}, Page Title: {page_title}")
+
     challenge_found = False
     for title in CHALLENGE_TITLES:
         if title.lower() == page_title.lower():
