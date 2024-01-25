@@ -29,7 +29,7 @@ SHORT_TIMEOUT = 1
 
 def click_verify(driver: WebDriver):
     logger.debug("waiting for the Cloudflare verify checkbox...")
-    time.sleep(random.randint(5,10))
+    time.sleep(random.randint(15,30))
     logger.debug(f"================Body: {driver.body}, Page Title: {driver.title}")
     try:
         logger.debug("Try to find the Cloudflare verify checkbox...")
