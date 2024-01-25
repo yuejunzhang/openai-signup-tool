@@ -30,6 +30,7 @@ SHORT_TIMEOUT = 1
 def click_verify(driver: WebDriver):
     logger.debug("waiting for the Cloudflare verify checkbox...")
     time.sleep(random.randint(5,10))
+    logger.debug(f"================Body: {driver.body}, Page Title: {driver.title}")
     try:
         logger.debug("Try to find the Cloudflare verify checkbox...")
         iframe = driver.find_element(By.XPATH, "//iframe[starts-with(@id, 'cf-chl-widget-')]")
@@ -78,7 +79,7 @@ def bypass(link,driver):
     # todo check ban
 
     page_title = driver.title
-    logger.debug(f"================Body: {driver.body}, Page Title: {page_title}")
+
 
     challenge_found = False
     for title in CHALLENGE_TITLES:
