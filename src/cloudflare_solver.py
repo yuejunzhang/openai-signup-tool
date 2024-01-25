@@ -28,7 +28,7 @@ CHALLENGE_SELECTORS = [
 SHORT_TIMEOUT = 1
 
 def click_verify(driver: WebDriver):
-    logger.debug("waiting for the Cloudflare verify checkbox...",driver)
+    logger.debug("waiting for the Cloudflare verify checkbox...")
     time.sleep(random.randint(5,10))
     try:
         logger.debug("Try to find the Cloudflare verify checkbox...")
@@ -68,10 +68,10 @@ def click_verify(driver: WebDriver):
 
 
 def bypass(link,driver):
-    logger.debug("=============",link)
+    
     driver.get(link)
     driver.start_session()
-
+    logger.debug("\n============="+ driver.html)
     driver.get(link)
     driver.start_session()
 
@@ -115,7 +115,7 @@ def bypass(link,driver):
 
             except TimeoutException:
                 logger.debug("Timeout waiting for selector")
-                
+
                 click_verify(driver)
 
                 # update the html (cloudflare reloads the page every 5 s)
